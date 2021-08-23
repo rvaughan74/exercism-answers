@@ -1,8 +1,7 @@
 # exercism-answers
 Collection of my answers to the coding challenges on exercism.io.
 
-**Note**
-These code solutions are designed to work with exercism.io's testing mechanisms and
+**Note**: These code solutions are designed to work with exercism.io's testing mechanisms and
 most likely cannot run standalone.
 
 Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
