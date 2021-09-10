@@ -1,10 +1,10 @@
 # exercism-answers
-Collection of my answers to the coding challenges on exercism.io.
+Collection of my answers to the coding challenges on exercism.org.
 
-**Note**: These code solutions are designed to work with exercism.io's testing mechanisms and
+**Note**: These code solutions are designed to work with exercism.org's testing mechanisms and
 most likely cannot run standalone.
 
-Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+[![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
 This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
