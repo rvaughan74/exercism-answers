@@ -27,15 +27,12 @@ sub to_roman {
 
     my $result = "";
 
-    while ( $number > 0 ) {
+    for my $key (@key_order) {
 
-        for my $key (@key_order) {
+        if ( $number >= $key ) {
 
-            while ( $number >= $key ) {
-
-                $number -= $key;
-                $result .= $roman{$key};
-            }
+            $result .= $roman{$key} . to_roman( $number - $key );
+            last;
         }
     }
 
