@@ -11,22 +11,25 @@ sub sing {
     my $verses  = $$input{verses};
 
     my $result = "";
+    my @parts  = ();
 
     for ( my $i = 0 ; $i < $verses ; $i++ ) {
 
+        my $line = "";
+
         if ( $bottles > 1 ) {
 
-            $result .=
+            $line .=
 "$bottles bottles of beer on the wall, $bottles bottles of beer.\n";
         }
         elsif ( $bottles == 1 ) {
 
-            $result .=
+            $line .=
               "$bottles bottle of beer on the wall, $bottles bottle of beer.\n";
         }
         elsif ( $bottles == 0 ) {
 
-            $result .=
+            $line .=
               "No more bottles of beer on the wall, no more bottles of beer.\n";
             $bottles = 100;
         }
@@ -51,13 +54,12 @@ sub sing {
 "Go to the store and buy some more, 99 bottles of beer on the wall.";
         }
 
-        $result .= $next;
-
-        if ( $i + 1 < $verses ) {
-            $result .= "\n\n";
-        }
+        $line .= $next;
+        push( @parts, $line );
         $bottles--;
     }
+
+    $result = join( "\n\n", @parts );
 
     return $result;
 }
