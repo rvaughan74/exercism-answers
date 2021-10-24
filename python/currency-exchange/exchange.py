@@ -2,7 +2,7 @@
 """
 
 
-def estimate_value(budget, exchange_rate):
+def exchange_money(budget, exchange_rate):
     """Get the value of budget exchanged into exchange_rate currency.
 
     Args:
@@ -31,7 +31,7 @@ def get_change(budget, exchanging_value):
     return budget-exchanging_value
 
 
-def get_value(denomination, number_of_bills):
+def get_value_of_bills(denomination, number_of_bills):
     """Calculate the value you have in denomination bills, given
     number_of_bills.
 
@@ -75,12 +75,12 @@ def exchangeable_value(budget, exchange_rate, spread, denomination):
 
     spread_percent = 1+(spread/100)
     actual_exchange_rate = exchange_rate * spread_percent
-    value_when_exchanged = estimate_value(budget, actual_exchange_rate)
+    value_when_exchanged = exchange_money(budget, actual_exchange_rate)
     bills = get_number_of_bills(value_when_exchanged, denomination)
-    return get_value(denomination, bills)
+    return get_value_of_bills(denomination, bills)
 
 
-def unexchangeable_value(budget, exchange_rate, spread, denomination):
+def non_exchangeable_value(budget, exchange_rate, spread, denomination):
     """Obtain the amount of exchanged value, that is unable to be expressed in
     denomination bills.
 
@@ -96,7 +96,7 @@ def unexchangeable_value(budget, exchange_rate, spread, denomination):
 
     spread_percent = 1+(spread/100)
     actual_exchange_rate = exchange_rate * spread_percent
-    value_when_exchanged = estimate_value(budget, actual_exchange_rate)
+    value_when_exchanged = exchange_money(budget, actual_exchange_rate)
     bills = get_number_of_bills(value_when_exchanged, denomination)
-    exchanged_value = get_value(denomination, bills)
+    exchanged_value = get_value_of_bills(denomination, bills)
     return int(value_when_exchanged-exchanged_value)
