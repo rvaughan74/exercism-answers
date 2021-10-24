@@ -1,33 +1,23 @@
 package TwelveDays;
 use strict;
 use warnings;
-use Data::Dumper;
 use Exporter qw<import>;
 our @EXPORT_OK = qw<recite>;
 
 my %gifts = (
-    "first"  => "a Partridge in a Pear Tree",
-    "second" => "two Turtle Doves, and a Partridge in a Pear Tree",
-    "third" =>
-      "three French Hens, two Turtle Doves, and a Partridge in a Pear Tree",
-    "fourth" =>
-"four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree",
-    "fifth" =>
-"five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree",
-    "sixth" =>
-"six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree",
-    "seventh" =>
-"seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree",
-    "eighth" =>
-"eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree",
-    "ninth" =>
-"nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree",
-    "tenth" =>
-"ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree",
-    "eleventh" =>
-"eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree",
-    "twelfth" =>
-"twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree",
+
+    "first"    => "a Partridge in a Pear Tree",
+    "second"   => "two Turtle Doves, and ",
+    "third"    => "three French Hens, ",
+    "fourth"   => "four Calling Birds, ",
+    "fifth"    => "five Gold Rings, ",
+    "sixth"    => "six Geese-a-Laying, ",
+    "seventh"  => "seven Swans-a-Swimming, ",
+    "eighth"   => "eight Maids-a-Milking, ",
+    "ninth"    => "nine Ladies Dancing, ",
+    "tenth"    => "ten Lords-a-Leaping, ",
+    "eleventh" => "eleven Pipers Piping, ",
+    "twelfth"  => "twelve Drummers Drumming, ",
 );
 
 my %keys = (
@@ -56,10 +46,17 @@ sub recite {
 
     foreach my $day (@order) {
 
-        my $key = $keys{$day};
+        my $key        = $keys{$day};
+        my @day_gifts  = ();
+        my @gift_order = reverse( 1 .. $day );
+        for my $g_day (@gift_order) {
+            push( @day_gifts, $gifts{ $keys{$g_day} } );
+        }
+
+        my $gift_str = join( "", @day_gifts );
 
         my $str =
-          "On the $key day of Christmas my true love gave to me: $gifts{$key}.";
+          "On the $key day of Christmas my true love gave to me: $gift_str.";
         push( @results, $str );
     }
     return join( "\n", @results );
