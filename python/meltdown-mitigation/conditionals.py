@@ -1,3 +1,7 @@
+"""Meltdown Mitigation in [python]
+"""
+
+
 def is_criticality_balanced(temperature, neutrons_emitted):
     '''
 
@@ -62,22 +66,18 @@ def fail_safe(temperature, neutrons_produced_per_second, threshold):
     :param threshold:
     :return: str one of: 'LOW', 'NORMAL', 'DANGER'
 
-    - `temperature * neutrons per second` < 40% of threshold == 'LOW'
+    - `temperature * neutrons per second` < 90% of threshold == 'LOW'
     - `temperature * neutrons per second` +/- 10% of `threshold` == 'NORMAL'
     - `temperature * neutron per second` is not in the above-stated ranges ==  'DANGER'
     '''
 
     result = "STALLED"
-    criticality = int(
-        ((temperature * neutrons_produced_per_second)/threshold)*100)
+    criticality = ((temperature * neutrons_produced_per_second)/threshold)*100
 
-    if criticality >= 90:
-        if criticality <= 110:
-            result = "NORMAL"
-        else:
-            result = "DANGER"
-    elif criticality < 40:
+    if criticality < 90:
         result = "LOW"
+    elif criticality <= 110:
+        result = "NORMAL"
     else:
         result = "DANGER"
 
