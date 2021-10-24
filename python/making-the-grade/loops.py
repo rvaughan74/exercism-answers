@@ -1,4 +1,4 @@
-"""making the grade - [python]
+"""Making The Grade - [python]
 """
 
 
@@ -78,7 +78,7 @@ def perfect_score(student_info):
     :return: First [<student name>, 100] found OR "No perfect score."
     """
 
-    result = "No perfect score."
+    result = []
 
     for sublist in student_info:
         if sublist[1] == 100:
